@@ -7,6 +7,84 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/backgroundPersonalHealth"
     tools:context="com.carvalhodj.personalhealth.gui.LoginActivity">
+
+    <ImageView
+        android:id="@+id/logo_personal_health"
+        android:src="@mipmap/ic_launcher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:layout_gravity="center_horizontal" />
+
+    <EditText
+        android:id="@+id/login_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:layout_below="@id/logo_personal_health"
+        android:hint="Email"/>
+
+    <EditText
+        android:id="@+id/login_senha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_below="@id/login_email"
+        android:inputType="numberPassword"
+        android:hint="Senha"/>
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:background="@color/buttonColor"
+        android:layout_marginTop="28dp"
+        android:padding="16dp"
+        android:layout_below="@+id/login_senha"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickLogin"/>
+
+    <Button
+        android:id="@+id/btn_login_facebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Facebook"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:background="@color/buttonColorFacebook"
+        android:layout_below="@id/login_btn"
+        android:layout_marginTop="24dp"
+        android:onClick="onClickLogin"/>
+
+    <Button
+        android:id="@+id/btn_login_google"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Google+"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:background="@color/buttonColorGoogle"
+        android:layout_alignTop="@+id/btn_login_facebook"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/btn_login_facebook"
+        android:onClick="onClickLogin"/>
+
+    <TextView
+        android:id="@+id/link_cadastro_usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Não tem cadastro? Clique aqui!"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="47dp"
+        android:layout_below="@+id/btn_login_google"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickLogin"/>
 
 </RelativeLayout>
