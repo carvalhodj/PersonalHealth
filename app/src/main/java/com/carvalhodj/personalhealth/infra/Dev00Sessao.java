@@ -1,12 +1,12 @@
 package com.carvalhodj.personalhealth.infra;
 
-import com.carvalhodj.personalhealth.dominio.Dev00Usuario;
+import com.carvalhodj.personalhealth.dominio.Dev01Usuario;
 
 import java.util.Date;
 
 public class Dev00Sessao {
     private static Dev00Sessao instancia = new Dev00Sessao();
-    private Dev00Usuario usuario;
+    private Dev01Usuario usuario;
     private Date horaLogin;
 
     private Dev00Sessao(){
@@ -29,11 +29,11 @@ public class Dev00Sessao {
         this.horaLogin = null;
     }
 
-    public Dev00Usuario getUsuario() {
+    public Dev01Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Dev00Usuario usuario) {
+    public void setUsuario(Dev01Usuario usuario) {
         this.usuario = usuario;
     }
 }

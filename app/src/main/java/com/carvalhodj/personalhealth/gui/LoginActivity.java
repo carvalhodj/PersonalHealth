@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.carvalhodj.personalhealth.R;
-import com.carvalhodj.personalhealth.dominio.Dev00Usuario;
+import com.carvalhodj.personalhealth.dominio.Dev01Usuario;
 import com.carvalhodj.personalhealth.infra.Dev00GuiUtil;
 import com.carvalhodj.personalhealth.infra.Dev00Sessao;
 import com.carvalhodj.personalhealth.infra.Dev01Validacao;
@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             try {
-                Dev00Usuario usuario = personalHealthService.login(usuarioEmailString, usuarioSenhaString);
+                Dev01Usuario usuario = personalHealthService.login(usuarioEmailString, usuarioSenhaString);
                 if (sessao.getUsuario()!=null){
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
@@ -61,8 +61,7 @@ public class LoginActivity extends AppCompatActivity {
             } catch (Exception exception) {
                 guiUtil.toastLong(getApplicationContext(), exception.getMessage());
             }
-            /*Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);*/
+
         }
 
         else if (v.getId() == R.id.btn_login_facebook) {

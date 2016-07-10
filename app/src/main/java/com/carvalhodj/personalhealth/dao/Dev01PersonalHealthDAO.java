@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.carvalhodj.personalhealth.dominio.Dev00Usuario;
+import com.carvalhodj.personalhealth.dominio.Dev01Usuario;
 import com.carvalhodj.personalhealth.infra.Dev00DatabaseHelper;
 
 public class Dev01PersonalHealthDAO {
@@ -15,7 +15,7 @@ public class Dev01PersonalHealthDAO {
         helper = new Dev00DatabaseHelper(context);
     }
 
-    public Dev00Usuario getUsuario(String email) {
+    public Dev01Usuario getUsuario(String email) {
         SQLiteDatabase db = helper.getReadableDatabase();
 
         String comando = "SELECT * FROM " + Dev00DatabaseHelper.TABLE_USER +
@@ -25,7 +25,7 @@ public class Dev01PersonalHealthDAO {
 
         Cursor cursor = db.rawQuery(comando, argumentos);
 
-        Dev00Usuario usuario = null;
+        Dev01Usuario usuario = null;
 
         if (cursor.moveToNext()) {
 
@@ -37,7 +37,7 @@ public class Dev01PersonalHealthDAO {
             int indexColumnSenha= cursor.getColumnIndex(senhaColumn);
             String senha = cursor.getString(indexColumnSenha);
 
-            usuario = new Dev00Usuario();
+            usuario = new Dev01Usuario();
             usuario.setId(id);
             usuario.setEmail(email);
             usuario.setPass(senha);
@@ -48,7 +48,7 @@ public class Dev01PersonalHealthDAO {
         return usuario;
     }
 
-    public Dev00Usuario getUsuario(String email, String senha){
+    public Dev01Usuario getUsuario(String email, String senha){
         SQLiteDatabase db = helper.getReadableDatabase();
 
         String comando = "SELECT * FROM " + Dev00DatabaseHelper.TABLE_USER +
@@ -59,7 +59,7 @@ public class Dev01PersonalHealthDAO {
 
         Cursor cursor = db.rawQuery(comando, argumentos);
 
-        Dev00Usuario usuario = null;
+        Dev01Usuario usuario = null;
 
         if (cursor.moveToNext()) {
 
@@ -67,7 +67,7 @@ public class Dev01PersonalHealthDAO {
             int indexColumnID= cursor.getColumnIndex(idColumn);
             long id = cursor.getLong(indexColumnID);
 
-            usuario = new Dev00Usuario();
+            usuario = new Dev01Usuario();
             usuario.setId(id);
             usuario.setEmail(email);
             usuario.setPass(senha);
@@ -78,7 +78,7 @@ public class Dev01PersonalHealthDAO {
         return usuario;
     }
 
-    public long inserir(Dev00Usuario usuario) {
+    public long inserir(Dev01Usuario usuario) {
         SQLiteDatabase db = helper.getWritableDatabase();
 
         ContentValues values = new ContentValues();

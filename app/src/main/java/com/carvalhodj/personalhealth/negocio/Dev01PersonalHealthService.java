@@ -3,7 +3,7 @@ package com.carvalhodj.personalhealth.negocio;
 import android.content.Context;
 
 import com.carvalhodj.personalhealth.dao.Dev01PersonalHealthDAO;
-import com.carvalhodj.personalhealth.dominio.Dev00Usuario;
+import com.carvalhodj.personalhealth.dominio.Dev01Usuario;
 import com.carvalhodj.personalhealth.infra.Dev00Sessao;
 
 public class Dev01PersonalHealthService {
@@ -18,13 +18,13 @@ public class Dev01PersonalHealthService {
     public void cadastrarUsuario(String nome, String email, String senha) throws Exception{
         sessao.reset();
 
-        Dev00Usuario usuario = personalHealthDAO.getUsuario(email);
+        Dev01Usuario usuario = personalHealthDAO.getUsuario(email);
 
         if (usuario!=null){
             throw new Exception("Email já cadastrado");
         }
 
-        usuario = new Dev00Usuario();
+        usuario = new Dev01Usuario();
         usuario.setNome(nome);
         usuario.setEmail(email);
         usuario.setPass(senha);
@@ -37,10 +37,10 @@ public class Dev01PersonalHealthService {
 
     }
 
-    public Dev00Usuario login(String email, String senha) throws Exception{
+    public Dev01Usuario login(String email, String senha) throws Exception{
         sessao.reset();
 
-        Dev00Usuario usuario = personalHealthDAO.getUsuario(email, senha);
+        Dev01Usuario usuario = personalHealthDAO.getUsuario(email, senha);
 
         if(usuario==null) {
             throw new Exception("Usuário ou senha inválidos");

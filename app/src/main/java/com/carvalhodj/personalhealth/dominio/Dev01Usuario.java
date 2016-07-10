@@ -1,10 +1,11 @@
 package com.carvalhodj.personalhealth.dominio;
 
-public class Dev00Usuario {
+public class Dev01Usuario {
     private String nome;
     private String email;
     private String pass;
     private long id;
+    private Dev01PerfilBiologico perfBio;
 
     public String getNome() {
         return nome;
