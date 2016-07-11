@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.carvalhodj.personalhealth.R;
+import com.carvalhodj.personalhealth.dominio.Dev01PerfilBiologico;
+import com.carvalhodj.personalhealth.dominio.Dev01PerfilBiologicoEnum;
 import com.carvalhodj.personalhealth.infra.Dev00GuiUtil;
 import com.carvalhodj.personalhealth.infra.Dev01Validacao;
 import com.carvalhodj.personalhealth.negocio.Dev01PersonalHealthService;
@@ -15,11 +17,15 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
     private Dev01Validacao validacaoUtil = Dev01Validacao.getValidacaoUtil();
     private Dev01PersonalHealthService personalHealthService = new Dev01PersonalHealthService(this);
     private Dev00GuiUtil guiUtil = Dev00GuiUtil.getGuiUtil();
+    private boolean biosensor = false;
+    private boolean cadastroPerfBio = false;
+    private Dev01PerfilBiologico perfBio = new Dev01PerfilBiologico();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_usuario);
+
     }
 
     public void onButtonClickCadastroUsuario(View v) {
@@ -77,15 +83,37 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                 senha.setError("Senhas não coincidem!");
                 repSenha.requestFocus();
                 repSenha.setError("Senhas não coincidem!");
+            }
+
+            if (!biosensor || !cadastroPerfBio) {
+                guiUtil.toastShort(getApplicationContext(),"Falta parear um biosensor ou coletar os dados biológicos");
             } else {
                 try {
-                    personalHealthService.cadastrarUsuario(nomeString, emailString, senhaString);
+                    personalHealthService.cadastrarUsuario(nomeString, emailString, senhaString, perfBio);
                     guiUtil.toastLong(getApplicationContext(), "Cadastro realizado com sucesso");
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                 } catch (Exception exception) {
                     guiUtil.toastLong(getApplicationContext(), exception.getMessage());
                 }
+            }
+        }
+
+        if (v.getId() == R.id.cadastro_botao_parear_biosensor) {
+            guiUtil.toastShort(getApplicationContext(), "Biosensor pareado");
+            biosensor = true;
+        }
+
+        if (v.getId() == R.id.cadastro_botao_perfil_biologico) {
+            if (cadastroPerfBio) {
+                guiUtil.toastShort(getApplicationContext(), "Perfil biológico já coletado");
+            } else {
+                guiUtil.toastLong(getApplicationContext(), "Aguarde, estamos coletando seus dados...");
+                perfBio = new Dev01PerfilBiologico();
+                String seqDna = Dev01PerfilBiologicoEnum.Caracteristica.getRandom().getSequencia();
+                perfBio.setDNASeq(seqDna);
+                cadastroPerfBio = true;
+                guiUtil.toastLong(getApplicationContext(), "Dados coletados");
             }
         }
     }

@@ -1,7 +1,11 @@
 package com.carvalhodj.personalhealth.gui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.carvalhodj.personalhealth.R;
@@ -23,11 +27,34 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.botao_logout) {
+            sessao.reset();
+
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public void onButtonClickMain(View v) {
         if (v.getId() == R.id.main_btn_perfil_biologico) {
-            Dev01Usuario usuario = sessao.getUsuario();
+            guiUtil.toastLong(getApplicationContext(), sessao.getUsuario().getPerfBio());
+
+            /*Dev01Usuario usuario = sessao.getUsuario();
             String a = usuario.getPerfBio();
 
             if (!Objects.equals(usuario.getPerfBio(), "0")) {
@@ -40,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             //sessao.getUsuario().setPerfBio(perfBio);
-            //guiUtil.toastShort(getApplicationContext(), sessao.getUsuario().getPerfBio());
+            //guiUtil.toastShort(getApplicationContext(), sessao.getUsuario().getPerfBio());*/
         }
     }
 }

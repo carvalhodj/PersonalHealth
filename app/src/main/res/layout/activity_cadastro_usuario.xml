@@ -57,14 +57,36 @@
         android:layout_below="@id/campoSenha"/>
 
     <Button
+        android:id="@+id/cadastro_botao_parear_biosensor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Parear biosensor"
+        android:textSize="16sp"
+        android:layout_marginTop="12dp"
+        android:layout_below="@id/campoRepeteSenha"
+        android:layout_alignParentStart="true"
+        android:onClick="onButtonClickCadastroUsuario"/>
+
+    <Button
+        android:id="@+id/cadastro_botao_perfil_biologico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coletar dados biológicos"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/cadastro_botao_parear_biosensor"
+        android:layout_alignParentStart="true"
+        android:onClick="onButtonClickCadastroUsuario"/>
+
+    <Button
         android:id="@+id/botao_cadastrar_usuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cadastrar"
         android:textSize="16sp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="32dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/campoRepeteSenha"
+        android:layout_below="@id/cadastro_botao_perfil_biologico"
         android:onClick="onButtonClickCadastroUsuario"/>
 
 </RelativeLayout>

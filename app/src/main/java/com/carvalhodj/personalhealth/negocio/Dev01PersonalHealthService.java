@@ -16,7 +16,7 @@ public class Dev01PersonalHealthService {
 
     }
 
-    public void cadastrarUsuario(String nome, String email, String senha) throws Exception{
+    public void cadastrarUsuario(String nome, String email, String senha, Dev01PerfilBiologico perfilBiologico) throws Exception{
         sessao.reset();
 
         Dev01Usuario usuario = personalHealthDAO.getUsuario(email);
@@ -29,7 +29,7 @@ public class Dev01PersonalHealthService {
         usuario.setNome(nome);
         usuario.setEmail(email);
         usuario.setPass(senha);
-        usuario.setPerfBio(new Dev01PerfilBiologico());
+        usuario.setPerfBio(perfilBiologico);
 
         long idUsuario = personalHealthDAO.inserir(usuario);
 
