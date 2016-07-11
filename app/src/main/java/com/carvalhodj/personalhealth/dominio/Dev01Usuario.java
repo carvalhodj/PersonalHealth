@@ -38,4 +38,12 @@ public class Dev01Usuario {
     public void setId(long id) {
         this.id = id;
     }
+
+    public String getPerfBio() {
+        return perfBio.getDNASeq();
+    }
+
+    public void setPerfBio(Dev01PerfilBiologico perfBio) {
+        this.perfBio = perfBio;
+    }
 }

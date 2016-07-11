@@ -3,6 +3,7 @@ package com.carvalhodj.personalhealth.negocio;
 import android.content.Context;
 
 import com.carvalhodj.personalhealth.dao.Dev01PersonalHealthDAO;
+import com.carvalhodj.personalhealth.dominio.Dev01PerfilBiologico;
 import com.carvalhodj.personalhealth.dominio.Dev01Usuario;
 import com.carvalhodj.personalhealth.infra.Dev00Sessao;
 
@@ -28,6 +29,7 @@ public class Dev01PersonalHealthService {
         usuario.setNome(nome);
         usuario.setEmail(email);
         usuario.setPass(senha);
+        usuario.setPerfBio(new Dev01PerfilBiologico());
 
         long idUsuario = personalHealthDAO.inserir(usuario);
 
@@ -49,5 +51,9 @@ public class Dev01PersonalHealthService {
         sessao.setUsuario(usuario);
 
         return usuario;
+    }
+
+    public void setPerfilBiologico(Dev01Usuario usuario, Dev01PerfilBiologico perfilBiologico) {
+        personalHealthDAO.cadastrarPerfilBiologico(usuario, perfilBiologico);
     }
 }

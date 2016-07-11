@@ -13,6 +13,7 @@ public class Dev00DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_NAME = "nome";
     public static final String COLUMN_EMAIL = "email";
     public static final String COLUMN_PASS = "pass";
+    public static final String COLUMN_DNASEQ = "dna_seq";
 
     public Dev00DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -22,11 +23,12 @@ public class Dev00DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(
-                "CREATE TABLE " + TABLE_USER + " (" +
+                "CREATE TABLE " + TABLE_USER + " ( " +
                         COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                         COLUMN_NAME + " TEXT NOT NULL, " +
                         COLUMN_EMAIL + " TEXT NOT NULL, " +
-                        COLUMN_PASS + " TEXT NOT NULL);");
+                        COLUMN_PASS + " TEXT NOT NULL, " +
+                        COLUMN_DNASEQ + " TEXT );");
 
     }
 
@@ -36,4 +38,5 @@ public class Dev00DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
         this.onCreate(db);
     }
+
 }
