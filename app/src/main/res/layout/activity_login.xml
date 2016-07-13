@@ -12,10 +12,11 @@
 
     <ImageView
         android:id="@+id/logo_personal_health"
-        android:src="@mipmap/ic_launcher"
+        android:src="@mipmap/logo_phealth"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="48dp"
+        android:layout_marginTop="48dp"
         android:layout_gravity="center_horizontal" />
 
     <EditText
