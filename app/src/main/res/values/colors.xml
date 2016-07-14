@@ -9,4 +9,5 @@
     <color name="white">#FFFFFF</color>
     <color name="backgroundPersonalHealth">#bdfff1</color>
     <color name="backgroundPersonalHealthDark">#00e2b2</color>
+    <color name="backgroundPersonalHealthDarker">#009979</color>
 </resources>
