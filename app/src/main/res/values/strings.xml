@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">PersonalHealth</string>
+
+    <string-array name="sintomas">
+        <item>Dor de cabeça</item>
+        <item>Enjôo</item>
+        <item>Dor de estômago</item>
+    </string-array>
 </resources>

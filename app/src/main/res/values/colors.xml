@@ -10,4 +10,5 @@
     <color name="backgroundPersonalHealth">#bdfff1</color>
     <color name="backgroundPersonalHealthDark">#00e2b2</color>
     <color name="backgroundPersonalHealthDarker">#009979</color>
+    <color name="black">#000000</color>
 </resources>

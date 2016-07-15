@@ -18,7 +18,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".gui.MainActivity" />
-        <activity android:name=".gui.CadastroUsuarioActivity"></activity>
+        <activity android:name=".gui.CadastroUsuarioActivity" />
+        <activity
+            android:name=".gui.PesquisaRemedioActivity"
+            android:label="Pesquisa Medicamento">
+        </activity>
     </application>
 
 </manifest>

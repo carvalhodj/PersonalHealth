@@ -68,6 +68,12 @@ public class MainActivity extends AppCompatActivity {
 
             //sessao.getUsuario().setPerfBio(perfBio);
             //guiUtil.toastShort(getApplicationContext(), sessao.getUsuario().getPerfBio());*/
+
+        }
+
+        if(v.getId() == R.id.main_btn_recomendar_medicamento) {
+            Intent intent = new Intent(getApplicationContext(), PesquisaRemedioActivity.class);
+            startActivity(intent);
         }
     }
 }

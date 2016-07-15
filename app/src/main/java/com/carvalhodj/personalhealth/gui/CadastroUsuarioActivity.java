@@ -86,7 +86,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
             }
 
             if (!biosensor || !cadastroPerfBio) {
-                guiUtil.toastShort(getApplicationContext(),"Falta parear um biosensor ou coletar os dados biológicos");
+                guiUtil.toastShort(getApplicationContext(),"Falta parear um biosensor e/ou coletar os dados biológicos");
             } else {
                 try {
                     personalHealthService.cadastrarUsuario(nomeString, emailString, senhaString, perfBio);
@@ -100,6 +100,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
         }
 
         if (v.getId() == R.id.cadastro_botao_parear_biosensor) {
+            guiUtil.toastLong(getApplicationContext(), "Buscando biosensor. Aguarde...");
             guiUtil.toastShort(getApplicationContext(), "Biosensor pareado");
             biosensor = true;
         }

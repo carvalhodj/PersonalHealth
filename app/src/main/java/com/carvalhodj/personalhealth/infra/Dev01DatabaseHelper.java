@@ -43,15 +43,15 @@ public class Dev01DatabaseHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(
                 "INSERT INTO " + TABLE_DRUG + " (name, application, biological_profile) " +
-                        "VALUES (HeadDrug, headache, CTGGTGGT);");
+                        "VALUES ('HeadDrug', 'headache', 'CTGGTGGT');");
 
         sqLiteDatabase.execSQL(
                 "INSERT INTO " + TABLE_DRUG + " (name, application, biological_profile) " +
-                        "VALUES (NoHeadPain, headache, CACAGCCT);");
+                        "VALUES ('NoHeadPain', 'headache', 'CACAGCCT');");
 
         sqLiteDatabase.execSQL(
                 "INSERT INTO " + TABLE_DRUG + " (name, application, biological_profile) " +
-                        "VALUES (HeadFree, headache, ATCTTCAA);");
+                        "VALUES ('HeadFree', 'headache', 'ATCTTCAA');");
 
     }
 
