@@ -3,6 +3,7 @@ package com.carvalhodj.personalhealth.negocio;
 import android.content.Context;
 
 import com.carvalhodj.personalhealth.dao.Dev01PersonalHealthDAO;
+import com.carvalhodj.personalhealth.dominio.Dev01Drug;
 import com.carvalhodj.personalhealth.dominio.Dev01PerfilBiologico;
 import com.carvalhodj.personalhealth.dominio.Dev01Usuario;
 import com.carvalhodj.personalhealth.infra.Dev00Sessao;
@@ -55,5 +56,9 @@ public class Dev01PersonalHealthService {
 
     public void setPerfilBiologico(Dev01Usuario usuario, Dev01PerfilBiologico perfilBiologico) {
         personalHealthDAO.cadastrarPerfilBiologico(usuario, perfilBiologico);
+    }
+
+    public Dev01Drug getBestOption(String sintoma, String perfBio) {
+        return personalHealthDAO.getBestOption(sintoma, perfBio);
     }
 }

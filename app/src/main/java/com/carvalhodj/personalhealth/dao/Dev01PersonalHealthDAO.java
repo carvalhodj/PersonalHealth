@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.carvalhodj.personalhealth.dominio.Dev01Drug;
 import com.carvalhodj.personalhealth.dominio.Dev01PerfilBiologico;
 import com.carvalhodj.personalhealth.dominio.Dev01Usuario;
 import com.carvalhodj.personalhealth.infra.Dev01DatabaseHelper;
@@ -209,9 +210,56 @@ public class Dev01PersonalHealthDAO {
 
     }
 
+    public Dev01Drug getBestOption(String sintoma, String perfBio) {
+        SQLiteDatabase db = helper.getReadableDatabase();
+
+        String comando = "SELECT * FROM " + Dev01DatabaseHelper.TABLE_DRUG +
+                " WHERE " + Dev01DatabaseHelper.COLUMN_APPLICATION + " LIKE ? " +
+                "AND " + Dev01DatabaseHelper.COLUMN_BIOPROF + " LIKE ?";
+
+        String[] argumentos = {sintoma, perfBio};
+
+        Cursor cursor = db.rawQuery(comando, argumentos);
+
+        Dev01Drug drug = null;
+
+        if(cursor.moveToNext()){
+            String idColumn= Dev01DatabaseHelper.COLUMN_ID;
+            int indexColumnID= cursor.getColumnIndex(idColumn);
+            long id = cursor.getLong(indexColumnID);
+
+            String nameColumn= Dev01DatabaseHelper.COLUMN_NAME;
+            int indexColumnName= cursor.getColumnIndex(nameColumn);
+            String name = cursor.getString(indexColumnName);
+
+            String applicationColumn= Dev01DatabaseHelper.COLUMN_APPLICATION;
+            int indexColumnApplication= cursor.getColumnIndex(applicationColumn);
+            String application = cursor.getString(indexColumnApplication);
+
+            String perfBioColumn = Dev01DatabaseHelper.COLUMN_BIOPROF;
+            int indexColumnPerfBio = cursor.getColumnIndex(perfBioColumn);
+            String bioProfile = cursor.getString(indexColumnPerfBio);
+
+            drug = criarDrugObject(id, name, application, bioProfile);
+        }
+        cursor.close();
+        db.close();
+
+        return drug;
+    }
+
     private Dev01PerfilBiologico criarPerfilBiologicoObject(String sequencia) {
         Dev01PerfilBiologico perfilBiologico = new Dev01PerfilBiologico();
         perfilBiologico.setDNASeq(sequencia);
         return perfilBiologico;
+    }
+
+    private Dev01Drug criarDrugObject(long id, String name, String application, String bioProfile) {
+        Dev01Drug drug = new Dev01Drug();
+        drug.setId(id);
+        drug.setName(name);
+        drug.setApplication(application);
+        drug.setBioProfile(bioProfile);
+        return drug;
     }
 }
