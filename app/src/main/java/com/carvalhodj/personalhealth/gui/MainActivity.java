@@ -54,26 +54,16 @@ public class MainActivity extends AppCompatActivity {
         if (v.getId() == R.id.main_btn_perfil_biologico) {
             guiUtil.toastLong(getApplicationContext(), sessao.getUsuario().getPerfBio());
 
-            /*Dev01Usuario usuario = sessao.getUsuario();
-            String a = usuario.getPerfBio();
-
-            if (!Objects.equals(usuario.getPerfBio(), "0")) {
-                guiUtil.toastShort(getApplicationContext(), usuario.getPerfBio());
-            } else {
-                Dev01PerfilBiologico perfBio = new Dev01PerfilBiologico();
-                String x = Dev01PerfilBiologicoEnum.Caracteristica.getRandom().getSequencia();
-                perfBio.setDNASeq(x);
-                personalHealthService.setPerfilBiologico(usuario, perfBio);
-            }
-
-            //sessao.getUsuario().setPerfBio(perfBio);
-            //guiUtil.toastShort(getApplicationContext(), sessao.getUsuario().getPerfBio());*/
-
         }
 
         if(v.getId() == R.id.main_btn_recomendar_medicamento) {
             Intent intent = new Intent(getApplicationContext(), PesquisaRemedioActivity.class);
             startActivity(intent);
+        }
+
+        if(v.getId() == R.id.main_btn_cadastrar_biosensor) {
+            guiUtil.toastLong(getApplicationContext(), "Pairing new Biosensor. Please wait...");
+            guiUtil.toastShort(getApplicationContext(), "Biosensor paired");
         }
     }
 }

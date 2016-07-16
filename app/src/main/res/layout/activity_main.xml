@@ -28,29 +28,11 @@
         android:background="@color/buttonColor"
         android:layout_width="104dp"
         android:layout_height="104dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginStart="18dp"
-        android:layout_alignParentStart="true"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/main_imagem_usuario"
         android:elegantTextHeight="false"
         android:focusable="false"
-        android:onClick="onButtonClickMain"/>
-
-    <Button
-        android:id="@+id/main_btn_informar_medicamento"
-        android:text="Informar remédio"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:padding="5dp"
-        android:background="@color/buttonColor"
-        android:layout_width="104dp"
-        android:layout_height="104dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="18dp"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/main_imagem_usuario"/>
+        android:onClick="onButtonClickMain"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/main_btn_perfil_biologico"

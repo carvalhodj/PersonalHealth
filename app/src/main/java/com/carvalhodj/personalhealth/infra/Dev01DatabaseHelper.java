@@ -53,6 +53,30 @@ public class Dev01DatabaseHelper extends SQLiteOpenHelper {
                 "INSERT INTO " + TABLE_DRUG + " (name, application, biological_profile) " +
                         "VALUES ('HeadFree', 'headache', 'ATCTTCAA');");
 
+        sqLiteDatabase.execSQL(
+                "INSERT INTO " + TABLE_DRUG + " (name, application, biological_profile) " +
+                        "VALUES ('NauseaStop', 'nausea', 'CTGGTGGT');");
+
+        sqLiteDatabase.execSQL(
+                "INSERT INTO " + TABLE_DRUG + " (name, application, biological_profile) " +
+                        "VALUES ('NoNausea', 'nausea', 'CACAGCCT');");
+
+        sqLiteDatabase.execSQL(
+                "INSERT INTO " + TABLE_DRUG + " (name, application, biological_profile) " +
+                        "VALUES ('Nauseastamin', 'nausea', 'ATCTTCAA');");
+
+        sqLiteDatabase.execSQL(
+                "INSERT INTO " + TABLE_DRUG + " (name, application, biological_profile) " +
+                        "VALUES ('StomachPeace', 'stomach ache', 'CTGGTGGT');");
+
+        sqLiteDatabase.execSQL(
+                "INSERT INTO " + TABLE_DRUG + " (name, application, biological_profile) " +
+                        "VALUES ('Stomachflex', 'stomach ache', 'CACAGCCT');");
+
+        sqLiteDatabase.execSQL(
+                "INSERT INTO " + TABLE_DRUG + " (name, application, biological_profile) " +
+                        "VALUES ('HealStomach', 'stomach ache', 'ATCTTCAA');");
+
     }
 
     @Override

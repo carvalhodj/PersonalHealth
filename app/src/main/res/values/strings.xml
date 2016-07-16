@@ -2,8 +2,8 @@
     <string name="app_name">PersonalHealth</string>
 
     <string-array name="sintomas">
-        <item>headache</item>
-        <item>Enjôo</item>
-        <item>Dor de estômago</item>
+        <item>Headache</item>
+        <item>Nausea</item>
+        <item>Stomach ache</item>
     </string-array>
 </resources>
