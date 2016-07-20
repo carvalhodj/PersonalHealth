@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class Dev01DatabaseHelper extends SQLiteOpenHelper {
+public class Dev00DatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "personalhealth.db";
 
@@ -19,7 +19,7 @@ public class Dev01DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_APPLICATION = "application";
     public static final String COLUMN_BIOPROF = "biological_profile";
 
-    public Dev01DatabaseHelper(Context context) {
+    public Dev00DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
     }

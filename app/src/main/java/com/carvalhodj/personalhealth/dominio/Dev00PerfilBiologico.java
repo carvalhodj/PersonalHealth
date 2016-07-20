@@ -1,6 +1,6 @@
 package com.carvalhodj.personalhealth.dominio;
 
-public class Dev01PerfilBiologico {
+public class Dev00PerfilBiologico {
     private String DNASeq;
 
     public String getDNASeq() {

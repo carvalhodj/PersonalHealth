@@ -3,25 +3,19 @@ package com.carvalhodj.personalhealth.gui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.carvalhodj.personalhealth.R;
-import com.carvalhodj.personalhealth.dominio.Dev01PerfilBiologico;
-import com.carvalhodj.personalhealth.dominio.Dev01PerfilBiologicoEnum;
-import com.carvalhodj.personalhealth.dominio.Dev01Usuario;
 import com.carvalhodj.personalhealth.infra.Dev00GuiUtil;
 import com.carvalhodj.personalhealth.infra.Dev00Sessao;
-import com.carvalhodj.personalhealth.negocio.Dev01PersonalHealthService;
-
-import java.util.Objects;
+import com.carvalhodj.personalhealth.negocio.Dev00PersonalHealthService;
 
 public class MainActivity extends AppCompatActivity {
     private Dev00GuiUtil guiUtil = Dev00GuiUtil.getGuiUtil();
     private Dev00Sessao sessao = Dev00Sessao.getInstancia();
-    private Dev01PersonalHealthService personalHealthService = new Dev01PersonalHealthService(this);
+    private Dev00PersonalHealthService personalHealthService = new Dev00PersonalHealthService(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(v.getId() == R.id.main_btn_cadastrar_biosensor) {
-            guiUtil.toastLong(getApplicationContext(), "Pairing new Biosensor. Please wait...");
-            guiUtil.toastShort(getApplicationContext(), "Biosensor paired");
+            guiUtil.toastLong(getApplicationContext(), getString(R.string.main_pair_new_biosensor));
+            guiUtil.toastShort(getApplicationContext(), getString(R.string.reg_biosensor_paired));
         }
     }
 }

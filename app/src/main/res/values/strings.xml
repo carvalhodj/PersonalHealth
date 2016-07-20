@@ -1,5 +1,40 @@
 <resources>
     <string name="app_name">PersonalHealth</string>
+    <string name="reg_error_empty_name">Empty name!</string>
+    <string name="reg_error_empty_email">Empty email!</string>
+    <string name="reg_error_empty_pass">Empty password!</string>
+    <string name="reg_error_blank_space_pass">Blank spaces are not allowed!</string>
+    <string name="reg_error_invalid_email">Invalid email!</string>
+    <string name="reg_error_diff_pass">Passwords don\'t match!</string>
+    <string name="reg_error_nopair_biosensor">Lack pair a biosensor and/or to collect biological data</string>
+    <string name="reg_completed">Registration successfully completed</string>
+    <string name="reg_search_biosensor">Searching biosensor. Please wait…</string>
+    <string name="reg_biosensor_paired">Biosensor paired</string>
+    <string name="reg_biodata_already_collected">Biological data already collected</string>
+    <string name="reg_collecting_biodata">We\'re collecting your biological data. Please wait…</string>
+    <string name="reg_biodata_collected">Biological data collected</string>
+    <string name="login_enter_email">Enter email!</string>
+    <string name="login_enter_pass">Enter password!</string>
+    <string name="login_to_be_impl">To be implemented…</string>
+    <string name="main_pair_new_biosensor">Pairing new Biosensor. Please wait…</string>
+    <string name="search_pretext">The best option for you is:</string>
+    <string name="email_field_hint">Email</string>
+    <string name="password_field_hint">Password</string>
+    <string name="btn_login_text">Login</string>
+    <string name="btn_facebook_login_text">Facebook</string>
+    <string name="btn_google_login_text">Google+</string>
+    <string name="link_register_users">No username or password? Click here!</string>
+    <string name="name_field_hint">Name</string>
+    <string name="repeat_password_field_hint">Repeat password</string>
+    <string name="btn_pair_biosensor_text">Pair biosensor</string>
+    <string name="btn_collect_biological_data_text">Collect biological data</string>
+    <string name="btn_submit_text">Submit</string>
+    <string name="btn_show_biological_profile_text">Show biological profile</string>
+    <string name="btn_recommend_remedy_text">Recommend remedy</string>
+    <string name="text_select_your_symptom">Select your symptom</string>
+    <string name="btn_find_text">Find</string>
+    <string name="img_user_photo_descr">User photo</string>
+    <string name="img_personalhealth_logo_descr">personalHealth logo</string>
 
     <string-array name="sintomas">
         <item>Headache</item>

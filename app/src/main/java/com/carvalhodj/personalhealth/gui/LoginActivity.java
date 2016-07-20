@@ -10,16 +10,16 @@ import android.view.WindowManager;
 import android.widget.EditText;
 
 import com.carvalhodj.personalhealth.R;
-import com.carvalhodj.personalhealth.dominio.Dev01Usuario;
+import com.carvalhodj.personalhealth.dominio.Dev00Usuario;
 import com.carvalhodj.personalhealth.infra.Dev00GuiUtil;
 import com.carvalhodj.personalhealth.infra.Dev00Sessao;
-import com.carvalhodj.personalhealth.infra.Dev01Validacao;
-import com.carvalhodj.personalhealth.negocio.Dev01PersonalHealthService;
+import com.carvalhodj.personalhealth.infra.Dev00Validacao;
+import com.carvalhodj.personalhealth.negocio.Dev00PersonalHealthService;
 
 public class LoginActivity extends AppCompatActivity {
-    private Dev01Validacao validacaoUtil = Dev01Validacao.getValidacaoUtil();
+    private Dev00Validacao validacaoUtil = Dev00Validacao.getValidacaoUtil();
     private Dev00Sessao sessao = Dev00Sessao.getInstancia();
-    private Dev01PersonalHealthService personalHealthService = new Dev01PersonalHealthService(this);
+    private Dev00PersonalHealthService personalHealthService = new Dev00PersonalHealthService(this);
     private Dev00GuiUtil guiUtil = Dev00GuiUtil.getGuiUtil();
     
     @Override
@@ -44,24 +44,24 @@ public class LoginActivity extends AppCompatActivity {
 
             if (validacaoUtil.isFieldEmpty(usuarioEmail)){
                 usuarioEmail.requestFocus();
-                usuarioEmail.setError("Digite email!");
+                usuarioEmail.setError(getString(R.string.login_enter_email));
                 return;
             }
 
             if (validacaoUtil.isFieldEmpty(usuarioSenha)){
                 usuarioSenha.requestFocus();
-                usuarioSenha.setError("Digite a senha!");
+                usuarioSenha.setError(getString(R.string.login_enter_pass));
                 return;
             }
 
             if(!validacaoUtil.isEmailValid(usuarioEmailString)){
                 usuarioEmail.requestFocus();
-                usuarioEmail.setError("Email inválido!");
+                usuarioEmail.setError(getString(R.string.reg_error_invalid_email));
                 return;
             }
 
             try {
-                Dev01Usuario usuario = personalHealthService.login(usuarioEmailString, usuarioSenhaString);
+                Dev00Usuario usuario = personalHealthService.login(usuarioEmailString, usuarioSenhaString);
                 if (sessao.getUsuario()!=null){
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
@@ -74,11 +74,11 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         else if (v.getId() == R.id.btn_login_facebook) {
-            //DO FACEBOOK STUFF
+            guiUtil.toastShort(getApplicationContext(), getString(R.string.login_to_be_impl));
         }
 
         else if (v.getId() == R.id.btn_login_google) {
-            //DO GOOGLE STUFF
+            guiUtil.toastShort(getApplicationContext(), getString(R.string.login_to_be_impl));
         }
 
         else if (v.getId() == R.id.link_cadastro_usuario) {

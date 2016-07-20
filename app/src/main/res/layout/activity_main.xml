@@ -12,16 +12,17 @@
 
     <ImageView
         android:id="@+id/main_imagem_usuario"
+        android:contentDescription="@string/img_user_photo_descr"
         android:layout_width="128dp"
         android:layout_height="128dp"
         android:layout_marginTop="36dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:background="@color/buttonColorFacebook"/>
+        android:src="@mipmap/user_photo_default"/>
 
     <Button
         android:id="@+id/main_btn_cadastrar_biosensor"
-        android:text="Cadastrar biosensor"
+        android:text="@string/btn_pair_biosensor_text"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:padding="5dp"
@@ -36,7 +37,7 @@
 
     <Button
         android:id="@+id/main_btn_perfil_biologico"
-        android:text="Mostrar perfil biológico"
+        android:text="@string/btn_show_biological_profile_text"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:padding="5dp"
@@ -52,7 +53,7 @@
 
     <Button
         android:id="@+id/main_btn_recomendar_medicamento"
-        android:text="Recomendar remédio"
+        android:text="@string/btn_recommend_remedy_text"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:padding="5dp"

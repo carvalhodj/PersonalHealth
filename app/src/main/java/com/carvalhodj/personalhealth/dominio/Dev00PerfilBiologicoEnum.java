@@ -1,6 +1,6 @@
 package com.carvalhodj.personalhealth.dominio;
 
-public class Dev01PerfilBiologicoEnum {
+public class Dev00PerfilBiologicoEnum {
 
     public enum Caracteristica {
         X("CTGGTGGT"), Y("CACAGCCT"), Z("ATCTTCAA");

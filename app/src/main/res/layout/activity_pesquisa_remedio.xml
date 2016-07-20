@@ -14,7 +14,7 @@
         android:id="@+id/busca_texto_tela"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Qual seu sintoma?"
+        android:text="@string/text_select_your_symptom"
         android:textSize="24sp"
         android:textColor="@color/black"
         android:layout_marginTop="24dp"
@@ -37,7 +37,7 @@
         android:layout_below="@id/busca_parametro"
         android:layout_marginTop="48dp"
         android:layout_centerHorizontal="true"
-        android:text="Buscar"
+        android:text="@string/btn_find_text"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:onClick="onButtonClickPesquisa"/>

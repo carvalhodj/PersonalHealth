@@ -12,6 +12,7 @@
 
     <ImageView
         android:id="@+id/logo_personal_health"
+        android:contentDescription="@string/img_personalhealth_logo_descr"
         android:src="@mipmap/logo_phealth"
         android:layout_width="match_parent"
         android:layout_height="75dp"
@@ -27,7 +28,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
         android:layout_below="@id/logo_personal_health"
-        android:hint="Email"/>
+        android:hint="@string/email_field_hint"/>
 
     <EditText
         android:id="@+id/login_senha"
@@ -36,13 +37,13 @@
         android:layout_marginTop="24dp"
         android:layout_below="@id/login_email"
         android:inputType="textPassword"
-        android:hint="Senha"/>
+        android:hint="@string/password_field_hint"/>
 
     <Button
         android:id="@+id/login_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="@string/btn_login_text"
         android:background="@color/buttonColor"
         android:layout_marginTop="28dp"
         android:padding="16dp"
@@ -54,19 +55,19 @@
         android:id="@+id/btn_login_facebook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Facebook"
+        android:text="@string/btn_facebook_login_text"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:background="@color/buttonColorFacebook"
-        android:layout_below="@id/login_btn"
-        android:layout_marginTop="24dp"
-        android:onClick="onClickLogin"/>
+        android:onClick="onClickLogin"
+        android:layout_alignTop="@+id/login_btn"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/btn_login_google"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Google+"
+        android:text="@string/btn_google_login_text"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:background="@color/buttonColorGoogle"
@@ -79,7 +80,7 @@
         android:id="@+id/link_cadastro_usuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Não tem cadastro? Clique aqui!"
+        android:text="@string/link_register_users"
         android:textSize="18sp"
         android:textStyle="bold"
         android:gravity="center_horizontal"

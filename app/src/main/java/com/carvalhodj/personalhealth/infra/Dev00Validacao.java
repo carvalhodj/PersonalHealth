@@ -6,13 +6,13 @@ import android.widget.EditText;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Dev01Validacao {
-    private static Dev01Validacao validacaoUtil = new Dev01Validacao();
+public class Dev00Validacao {
+    private static Dev00Validacao validacaoUtil = new Dev00Validacao();
 
-    private Dev01Validacao(){
+    private Dev00Validacao(){
     }
 
-    public static Dev01Validacao getValidacaoUtil(){
+    public static Dev00Validacao getValidacaoUtil(){
         return validacaoUtil;
     }
 

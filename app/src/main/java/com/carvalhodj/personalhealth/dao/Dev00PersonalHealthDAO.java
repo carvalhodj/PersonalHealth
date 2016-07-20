@@ -5,62 +5,62 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.carvalhodj.personalhealth.dominio.Dev01Drug;
-import com.carvalhodj.personalhealth.dominio.Dev01PerfilBiologico;
-import com.carvalhodj.personalhealth.dominio.Dev01Usuario;
-import com.carvalhodj.personalhealth.infra.Dev01DatabaseHelper;
+import com.carvalhodj.personalhealth.dominio.Dev00Drug;
+import com.carvalhodj.personalhealth.dominio.Dev00PerfilBiologico;
+import com.carvalhodj.personalhealth.dominio.Dev00Usuario;
+import com.carvalhodj.personalhealth.infra.Dev00DatabaseHelper;
 
 import java.util.Objects;
 
-public class Dev01PersonalHealthDAO {
-    private Dev01DatabaseHelper helper;
+public class Dev00PersonalHealthDAO {
+    private Dev00DatabaseHelper helper;
 
-    public Dev01PersonalHealthDAO(Context context){
-        helper = new Dev01DatabaseHelper(context);
+    public Dev00PersonalHealthDAO(Context context){
+        helper = new Dev00DatabaseHelper(context);
     }
 
-    public Dev01Usuario getUsuario(String email) {
+    public Dev00Usuario getUsuario(String email) {
         SQLiteDatabase db = helper.getReadableDatabase();
 
-        String comando = "SELECT * FROM " + Dev01DatabaseHelper.TABLE_USER +
-                " WHERE " + Dev01DatabaseHelper.COLUMN_EMAIL + " LIKE ?";
+        String comando = "SELECT * FROM " + Dev00DatabaseHelper.TABLE_USER +
+                " WHERE " + Dev00DatabaseHelper.COLUMN_EMAIL + " LIKE ?";
 
         String[] argumentos = {email};
 
         Cursor cursor = db.rawQuery(comando, argumentos);
 
-        Dev01Usuario usuario = null;
+        Dev00Usuario usuario = null;
 
         if (cursor.moveToNext()) {
 
-            String idColumn= Dev01DatabaseHelper.COLUMN_ID;
+            String idColumn= Dev00DatabaseHelper.COLUMN_ID;
             int indexColumnID= cursor.getColumnIndex(idColumn);
             long id = cursor.getLong(indexColumnID);
 
-            String nameColumn= Dev01DatabaseHelper.COLUMN_NAME;
+            String nameColumn= Dev00DatabaseHelper.COLUMN_NAME;
             int indexColumnName= cursor.getColumnIndex(nameColumn);
             String name = cursor.getString(indexColumnName);
 
-            String senhaColumn= Dev01DatabaseHelper.COLUMN_PASS;
+            String senhaColumn= Dev00DatabaseHelper.COLUMN_PASS;
             int indexColumnSenha= cursor.getColumnIndex(senhaColumn);
             String senha = cursor.getString(indexColumnSenha);
 
-            String perfBioColumn = Dev01DatabaseHelper.COLUMN_DNASEQ;
+            String perfBioColumn = Dev00DatabaseHelper.COLUMN_DNASEQ;
             int indexColumnPerfBio = cursor.getColumnIndex(perfBioColumn);
             String perfBio = cursor.getString(indexColumnPerfBio);
 
             if (Objects.equals(perfBio, "0")) {
-                usuario = new Dev01Usuario();
+                usuario = new Dev00Usuario();
                 usuario.setId(id);
                 usuario.setNome(name);
                 usuario.setEmail(email);
                 usuario.setPass(senha);
-                usuario.setPerfBio(new Dev01PerfilBiologico());
+                usuario.setPerfBio(new Dev00PerfilBiologico());
 
             } else {
-                Dev01PerfilBiologico perfilBiologico = criarPerfilBiologicoObject(perfBio);
+                Dev00PerfilBiologico perfilBiologico = criarPerfilBiologicoObject(perfBio);
 
-                usuario = new Dev01Usuario();
+                usuario = new Dev00Usuario();
                 usuario.setId(id);
                 usuario.setNome(name);
                 usuario.setEmail(email);
@@ -74,45 +74,45 @@ public class Dev01PersonalHealthDAO {
         return usuario;
     }
 
-    public Dev01Usuario getUsuario(String email, String senha){
+    public Dev00Usuario getUsuario(String email, String senha){
         SQLiteDatabase db = helper.getReadableDatabase();
 
-        String comando = "SELECT * FROM " + Dev01DatabaseHelper.TABLE_USER +
-                " WHERE " + Dev01DatabaseHelper.COLUMN_EMAIL + " LIKE ? AND " +
-                Dev01DatabaseHelper.COLUMN_PASS + " LIKE ?";
+        String comando = "SELECT * FROM " + Dev00DatabaseHelper.TABLE_USER +
+                " WHERE " + Dev00DatabaseHelper.COLUMN_EMAIL + " LIKE ? AND " +
+                Dev00DatabaseHelper.COLUMN_PASS + " LIKE ?";
 
         String[] argumentos = {email, senha};
 
         Cursor cursor = db.rawQuery(comando, argumentos);
 
-        Dev01Usuario usuario = null;
+        Dev00Usuario usuario = null;
 
         if (cursor.moveToNext()) {
 
-            String idColumn= Dev01DatabaseHelper.COLUMN_ID;
+            String idColumn= Dev00DatabaseHelper.COLUMN_ID;
             int indexColumnID= cursor.getColumnIndex(idColumn);
             long id = cursor.getLong(indexColumnID);
 
-            String nameColumn= Dev01DatabaseHelper.COLUMN_NAME;
+            String nameColumn= Dev00DatabaseHelper.COLUMN_NAME;
             int indexColumnName= cursor.getColumnIndex(nameColumn);
             String name = cursor.getString(indexColumnName);
 
-            String perfBioColumn = Dev01DatabaseHelper.COLUMN_DNASEQ;
+            String perfBioColumn = Dev00DatabaseHelper.COLUMN_DNASEQ;
             int indexColumnPerfBio = cursor.getColumnIndex(perfBioColumn);
             String perfBio = cursor.getString(indexColumnPerfBio);
 
             if (Objects.equals(perfBio, "0")) {
-                usuario = new Dev01Usuario();
+                usuario = new Dev00Usuario();
                 usuario.setId(id);
                 usuario.setNome(name);
                 usuario.setEmail(email);
                 usuario.setPass(senha);
-                usuario.setPerfBio(new Dev01PerfilBiologico());
+                usuario.setPerfBio(new Dev00PerfilBiologico());
 
             } else {
-                Dev01PerfilBiologico perfilBiologico = criarPerfilBiologicoObject(perfBio);
+                Dev00PerfilBiologico perfilBiologico = criarPerfilBiologicoObject(perfBio);
 
-                usuario = new Dev01Usuario();
+                usuario = new Dev00Usuario();
                 usuario.setId(id);
                 usuario.setNome(name);
                 usuario.setEmail(email);
@@ -126,21 +126,21 @@ public class Dev01PersonalHealthDAO {
         return usuario;
     }
 
-    public long inserir(Dev01Usuario usuario) {
+    public long inserir(Dev00Usuario usuario) {
         SQLiteDatabase db = helper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
 
-        String nomeColumn = Dev01DatabaseHelper.COLUMN_NAME;
+        String nomeColumn = Dev00DatabaseHelper.COLUMN_NAME;
         String nome = usuario.getNome();
 
-        String emailColumn = Dev01DatabaseHelper.COLUMN_EMAIL;
+        String emailColumn = Dev00DatabaseHelper.COLUMN_EMAIL;
         String email = usuario.getEmail();
 
-        String senhaColumn = Dev01DatabaseHelper.COLUMN_PASS;
+        String senhaColumn = Dev00DatabaseHelper.COLUMN_PASS;
         String senha = usuario.getPass();
 
-        String perfilBiologicoColumn = Dev01DatabaseHelper.COLUMN_DNASEQ;
+        String perfilBiologicoColumn = Dev00DatabaseHelper.COLUMN_DNASEQ;
         String perfilBiologico = usuario.getPerfBio();
 
         values.put(nomeColumn, nome);
@@ -148,7 +148,7 @@ public class Dev01PersonalHealthDAO {
         values.put(senhaColumn, senha);
         values.put(perfilBiologicoColumn, perfilBiologico);
 
-        String tabela = Dev01DatabaseHelper.TABLE_USER;
+        String tabela = Dev00DatabaseHelper.TABLE_USER;
 
         long id = db.insert(tabela, null, values);
 
@@ -156,38 +156,38 @@ public class Dev01PersonalHealthDAO {
         return id;
     }
 
-    public long cadastrarPerfilBiologico(Dev01Usuario usuario, Dev01PerfilBiologico perfilBiologico) {
+    public long cadastrarPerfilBiologico(Dev00Usuario usuario, Dev00PerfilBiologico perfilBiologico) {
         SQLiteDatabase db = helper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
 
         long idUsuario = usuario.getId();
 
-        String comando = "SELECT * FROM " + Dev01DatabaseHelper.TABLE_USER +
-                " WHERE " + Dev01DatabaseHelper.COLUMN_ID + " LIKE ?";
+        String comando = "SELECT * FROM " + Dev00DatabaseHelper.TABLE_USER +
+                " WHERE " + Dev00DatabaseHelper.COLUMN_ID + " LIKE ?";
 
         String[] argumentos = {String.valueOf(idUsuario)};
 
         Cursor cursor = db.rawQuery(comando, argumentos);
 
         if (cursor.moveToNext()) {
-            String perfBioColumn = Dev01DatabaseHelper.COLUMN_DNASEQ;
+            String perfBioColumn = Dev00DatabaseHelper.COLUMN_DNASEQ;
             int indexColumnPerfBio = cursor.getColumnIndex(perfBioColumn);
             String perfBio = cursor.getString(indexColumnPerfBio);
 
-            String idColumn= Dev01DatabaseHelper.COLUMN_ID;
+            String idColumn= Dev00DatabaseHelper.COLUMN_ID;
             int indexColumnID= cursor.getColumnIndex(idColumn);
             long id = cursor.getLong(indexColumnID);
 
-            String nameColumn= Dev01DatabaseHelper.COLUMN_NAME;
+            String nameColumn= Dev00DatabaseHelper.COLUMN_NAME;
             int indexColumnName= cursor.getColumnIndex(nameColumn);
             String name = cursor.getString(indexColumnName);
 
-            String emailColumn= Dev01DatabaseHelper.COLUMN_EMAIL;
+            String emailColumn= Dev00DatabaseHelper.COLUMN_EMAIL;
             int indexColumnEmail= cursor.getColumnIndex(emailColumn);
             String email = cursor.getString(indexColumnEmail);
 
-            String passColumn= Dev01DatabaseHelper.COLUMN_PASS;
+            String passColumn= Dev00DatabaseHelper.COLUMN_PASS;
             int indexColumnPass= cursor.getColumnIndex(passColumn);
             String pass = cursor.getString(indexColumnPass);
 
@@ -199,7 +199,7 @@ public class Dev01PersonalHealthDAO {
             values.put(idColumn, usuario.getId());
 
 
-            db.update(Dev01DatabaseHelper.TABLE_USER, values, Dev01DatabaseHelper.COLUMN_ID + " = ?", new String[] {String.valueOf(idUsuario)});
+            db.update(Dev00DatabaseHelper.TABLE_USER, values, Dev00DatabaseHelper.COLUMN_ID + " = ?", new String[] {String.valueOf(idUsuario)});
 
         }
 
@@ -210,33 +210,33 @@ public class Dev01PersonalHealthDAO {
 
     }
 
-    public Dev01Drug getBestOption(String sintoma, String perfBio) {
+    public Dev00Drug getBestOption(String sintoma, String perfBio) {
         SQLiteDatabase db = helper.getReadableDatabase();
 
-        String comando = "SELECT * FROM " + Dev01DatabaseHelper.TABLE_DRUG +
-                " WHERE " + Dev01DatabaseHelper.COLUMN_APPLICATION + " LIKE ? " +
-                "AND " + Dev01DatabaseHelper.COLUMN_BIOPROF + " LIKE ?";
+        String comando = "SELECT * FROM " + Dev00DatabaseHelper.TABLE_DRUG +
+                " WHERE " + Dev00DatabaseHelper.COLUMN_APPLICATION + " LIKE ? " +
+                "AND " + Dev00DatabaseHelper.COLUMN_BIOPROF + " LIKE ?";
 
         String[] argumentos = {sintoma, perfBio};
 
         Cursor cursor = db.rawQuery(comando, argumentos);
 
-        Dev01Drug drug = null;
+        Dev00Drug drug = null;
 
         if(cursor.moveToNext()){
-            String idColumn= Dev01DatabaseHelper.COLUMN_ID;
+            String idColumn= Dev00DatabaseHelper.COLUMN_ID;
             int indexColumnID= cursor.getColumnIndex(idColumn);
             long id = cursor.getLong(indexColumnID);
 
-            String nameColumn= Dev01DatabaseHelper.COLUMN_NAME;
+            String nameColumn= Dev00DatabaseHelper.COLUMN_NAME;
             int indexColumnName= cursor.getColumnIndex(nameColumn);
             String name = cursor.getString(indexColumnName);
 
-            String applicationColumn= Dev01DatabaseHelper.COLUMN_APPLICATION;
+            String applicationColumn= Dev00DatabaseHelper.COLUMN_APPLICATION;
             int indexColumnApplication= cursor.getColumnIndex(applicationColumn);
             String application = cursor.getString(indexColumnApplication);
 
-            String perfBioColumn = Dev01DatabaseHelper.COLUMN_BIOPROF;
+            String perfBioColumn = Dev00DatabaseHelper.COLUMN_BIOPROF;
             int indexColumnPerfBio = cursor.getColumnIndex(perfBioColumn);
             String bioProfile = cursor.getString(indexColumnPerfBio);
 
@@ -248,14 +248,14 @@ public class Dev01PersonalHealthDAO {
         return drug;
     }
 
-    private Dev01PerfilBiologico criarPerfilBiologicoObject(String sequencia) {
-        Dev01PerfilBiologico perfilBiologico = new Dev01PerfilBiologico();
+    private Dev00PerfilBiologico criarPerfilBiologicoObject(String sequencia) {
+        Dev00PerfilBiologico perfilBiologico = new Dev00PerfilBiologico();
         perfilBiologico.setDNASeq(sequencia);
         return perfilBiologico;
     }
 
-    private Dev01Drug criarDrugObject(long id, String name, String application, String bioProfile) {
-        Dev01Drug drug = new Dev01Drug();
+    private Dev00Drug criarDrugObject(long id, String name, String application, String bioProfile) {
+        Dev00Drug drug = new Dev00Drug();
         drug.setId(id);
         drug.setName(name);
         drug.setApplication(application);

@@ -7,19 +7,19 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.carvalhodj.personalhealth.R;
-import com.carvalhodj.personalhealth.dominio.Dev01PerfilBiologico;
-import com.carvalhodj.personalhealth.dominio.Dev01PerfilBiologicoEnum;
+import com.carvalhodj.personalhealth.dominio.Dev00PerfilBiologico;
+import com.carvalhodj.personalhealth.dominio.Dev00PerfilBiologicoEnum;
 import com.carvalhodj.personalhealth.infra.Dev00GuiUtil;
-import com.carvalhodj.personalhealth.infra.Dev01Validacao;
-import com.carvalhodj.personalhealth.negocio.Dev01PersonalHealthService;
+import com.carvalhodj.personalhealth.infra.Dev00Validacao;
+import com.carvalhodj.personalhealth.negocio.Dev00PersonalHealthService;
 
 public class CadastroUsuarioActivity extends AppCompatActivity {
-    private Dev01Validacao validacaoUtil = Dev01Validacao.getValidacaoUtil();
-    private Dev01PersonalHealthService personalHealthService = new Dev01PersonalHealthService(this);
+    private Dev00Validacao validacaoUtil = Dev00Validacao.getValidacaoUtil();
+    private Dev00PersonalHealthService personalHealthService = new Dev00PersonalHealthService(this);
     private Dev00GuiUtil guiUtil = Dev00GuiUtil.getGuiUtil();
     private boolean biosensor = false;
     private boolean cadastroPerfBio = false;
-    private Dev01PerfilBiologico perfBio = new Dev01PerfilBiologico();
+    private Dev00PerfilBiologico perfBio = new Dev00PerfilBiologico();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,25 +42,25 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
             if (validacaoUtil.isFieldEmpty(nome)) {
                 nome.requestFocus();
-                nome.setError("Nome vazio!");
+                nome.setError(getString(R.string.reg_error_empty_name));
                 return;
             }
 
             if (validacaoUtil.isFieldEmpty(email)) {
                 email.requestFocus();
-                email.setError("Email vazio!");
+                email.setError(getString(R.string.reg_error_empty_email));
                 return;
             }
 
             if (validacaoUtil.isFieldEmpty(senha) || validacaoUtil.isFieldEmpty(repSenha)) {
                 if (validacaoUtil.isFieldEmpty(senha)) {
                     senha.requestFocus();
-                    senha.setError("Senha vazia!");
+                    senha.setError(getString(R.string.reg_error_empty_pass));
                 }
 
                 if (validacaoUtil.isFieldEmpty(repSenha)) {
                     repSenha.requestFocus();
-                    repSenha.setError("Repita a senha!");
+                    repSenha.setError(getString(R.string.reg_error_empty_pass));
                 }
 
                 return;
@@ -68,29 +68,29 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
             if (!validacaoUtil.hasSpacePassword(senha)) {
                 senha.requestFocus();
-                senha.setError("Não é permitido espaços em branco!");
+                senha.setError(getString(R.string.reg_error_blank_space_pass));
                 return;
             }
 
             if (!validacaoUtil.isEmailValid(emailString)) {
                 email.requestFocus();
-                email.setError("Email inválido!");
+                email.setError(getString(R.string.reg_error_invalid_email));
                 return;
             }
 
             if (!senhaString.equals(repSenhaString)) {
                 senha.requestFocus();
-                senha.setError("Senhas não coincidem!");
+                senha.setError(getString(R.string.reg_error_diff_pass));
                 repSenha.requestFocus();
-                repSenha.setError("Senhas não coincidem!");
+                repSenha.setError(getString(R.string.reg_error_diff_pass));
             }
 
             if (!biosensor || !cadastroPerfBio) {
-                guiUtil.toastShort(getApplicationContext(),"Falta parear um biosensor e/ou coletar os dados biológicos");
+                guiUtil.toastShort(getApplicationContext(),getString(R.string.reg_error_nopair_biosensor));
             } else {
                 try {
                     personalHealthService.cadastrarUsuario(nomeString, emailString, senhaString, perfBio);
-                    guiUtil.toastLong(getApplicationContext(), "Cadastro realizado com sucesso");
+                    guiUtil.toastLong(getApplicationContext(), getString(R.string.reg_completed));
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                 } catch (Exception exception) {
@@ -100,21 +100,21 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
         }
 
         if (v.getId() == R.id.cadastro_botao_parear_biosensor) {
-            guiUtil.toastLong(getApplicationContext(), "Buscando biosensor. Aguarde...");
-            guiUtil.toastShort(getApplicationContext(), "Biosensor pareado");
+            guiUtil.toastLong(getApplicationContext(), getString(R.string.reg_search_biosensor));
+            guiUtil.toastShort(getApplicationContext(), getString(R.string.reg_biosensor_paired));
             biosensor = true;
         }
 
         if (v.getId() == R.id.cadastro_botao_perfil_biologico) {
             if (cadastroPerfBio) {
-                guiUtil.toastShort(getApplicationContext(), "Perfil biológico já coletado");
+                guiUtil.toastShort(getApplicationContext(), getString(R.string.reg_biodata_already_collected));
             } else {
-                guiUtil.toastLong(getApplicationContext(), "Aguarde, estamos coletando seus dados...");
-                perfBio = new Dev01PerfilBiologico();
-                String seqDna = Dev01PerfilBiologicoEnum.Caracteristica.getRandom().getSequencia();
+                guiUtil.toastLong(getApplicationContext(), getString(R.string.reg_collecting_biodata));
+                perfBio = new Dev00PerfilBiologico();
+                String seqDna = Dev00PerfilBiologicoEnum.Caracteristica.getRandom().getSequencia();
                 perfBio.setDNASeq(seqDna);
                 cadastroPerfBio = true;
-                guiUtil.toastLong(getApplicationContext(), "Dados coletados");
+                guiUtil.toastLong(getApplicationContext(), getString(R.string.reg_biodata_collected));
             }
         }
     }

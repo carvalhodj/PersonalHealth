@@ -3,22 +3,18 @@ package com.carvalhodj.personalhealth.gui;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.carvalhodj.personalhealth.R;
-import com.carvalhodj.personalhealth.dominio.Dev01Drug;
+import com.carvalhodj.personalhealth.dominio.Dev00Drug;
 import com.carvalhodj.personalhealth.infra.Dev00GuiUtil;
 import com.carvalhodj.personalhealth.infra.Dev00Sessao;
-import com.carvalhodj.personalhealth.negocio.Dev01PersonalHealthService;
-
-import java.util.ArrayList;
+import com.carvalhodj.personalhealth.negocio.Dev00PersonalHealthService;
 
 public class PesquisaRemedioActivity extends AppCompatActivity {
     private Dev00Sessao sessao = Dev00Sessao.getInstancia();
-    private Dev01PersonalHealthService personalHealthService = new Dev01PersonalHealthService(this);
+    private Dev00PersonalHealthService personalHealthService = new Dev00PersonalHealthService(this);
     private Dev00GuiUtil guiUtil = Dev00GuiUtil.getGuiUtil();
 
     @Override
@@ -36,9 +32,9 @@ public class PesquisaRemedioActivity extends AppCompatActivity {
             String buscaString = busca.getSelectedItem().toString().toLowerCase();
             String bioProfile = sessao.getUsuario().getPerfBio();
 
-            Dev01Drug bestDrug = personalHealthService.getBestOption(buscaString, bioProfile);
+            Dev00Drug bestDrug = personalHealthService.getBestOption(buscaString, bioProfile);
 
-            titleResultado.setText("The best option for you is:");
+            titleResultado.setText(R.string.search_pretext);
             melhorRemedio.setText(bestDrug.getName());
 
         }

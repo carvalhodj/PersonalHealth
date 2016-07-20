@@ -1,6 +1,6 @@
 package com.carvalhodj.personalhealth.dominio;
 
-public class Dev01Drug {
+public class Dev00Drug {
     private String name;
     private String application;
     private String bioProfile;

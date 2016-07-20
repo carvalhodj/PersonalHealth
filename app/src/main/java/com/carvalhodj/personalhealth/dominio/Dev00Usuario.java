@@ -1,11 +1,11 @@
 package com.carvalhodj.personalhealth.dominio;
 
-public class Dev01Usuario {
+public class Dev00Usuario {
     private String nome;
     private String email;
     private String pass;
     private long id;
-    private Dev01PerfilBiologico perfBio;
+    private Dev00PerfilBiologico perfBio;
 
     public String getNome() {
         return nome;
@@ -43,7 +43,7 @@ public class Dev01Usuario {
         return perfBio.getDNASeq();
     }
 
-    public void setPerfBio(Dev01PerfilBiologico perfBio) {
+    public void setPerfBio(Dev00PerfilBiologico perfBio) {
         this.perfBio = perfBio;
     }
 }
